@@ -14,12 +14,7 @@ df = get_data()
 df.fillna('Not Specified', inplace=True)
 
 
-# Repository Popularity Overview: Bar charts to display repositories with the highest stars and forks.
-# st.bar_chart(data = df1,\
-#     x = 'repositories',\
-#     y = st.session_state['category'],\
-#         color = '#0361ff')
-# st.set_page_config(layout = 'wide')
+
 st.markdown('''
 <style>
 .big-font {
