@@ -8,16 +8,6 @@ from collections import Counter
 
 def get_data():
     return pd.read_csv('https://raw.githubusercontent.com/KevinGao99/Projects/main/Github_Dataset/Data/github_dataset.csv')
-if 'bar_num' not in st.session_state:
-    st.session_state['bar_num'] = 10
-if 'category' not in st.session_state:
-    st.session_state['category'] = 'stars_count'
-bn1 = st.selectbox(label = 'Select the number of repositories to display',\
-    options = [5, 10, 15])
-st.session_state['bar_num'] = bn1
-bc1 = st.selectbox(label = 'Select the category to display',\
-    options = ['stars_count', 'forks_count'])
-st.session_state['category'] = bc1
 
 
 df = get_data()
@@ -39,7 +29,18 @@ st.markdown('''
 </style>
 ''', unsafe_allow_html= True)
 st.markdown('<p class="big-font">Github Repository Popularity Overview</p>', unsafe_allow_html=True)
-# st.write(df1[['repositories', 'stars_count', 'forks_count']])
+
+if 'bar_num' not in st.session_state:
+    st.session_state['bar_num'] = 10
+if 'category' not in st.session_state:
+    st.session_state['category'] = 'stars_count'
+bn1 = st.selectbox(label = 'Select the number of repositories to display',\
+    options = [5, 10, 15])
+st.session_state['bar_num'] = bn1
+bc1 = st.selectbox(label = 'Select the category to display',\
+    options = ['stars_count', 'forks_count'])
+st.session_state['category'] = bc1
+
 st.write('The following bar chart shows the top ', st.session_state['bar_num'], ' repositories with the highest ', st.session_state['category'], ' on Github.')
 st.write(alt.Chart(df1).mark_bar().encode(
     y = alt.Y('repositories:N', sort = '-x'),
