@@ -14,7 +14,6 @@ df = get_data()
 df.fillna('Not Specified', inplace=True)
 
 
-df1 = df.sort_values(by = st.session_state['category'], ascending = False)[:st.session_state['bar_num'] + 1].reset_index().drop('index', axis = 1)
 # Repository Popularity Overview: Bar charts to display repositories with the highest stars and forks.
 # st.bar_chart(data = df1,\
 #     x = 'repositories',\
@@ -41,6 +40,7 @@ bc1 = st.selectbox(label = 'Select the category to display',\
     options = ['stars_count', 'forks_count'])
 st.session_state['category'] = bc1
 
+df1 = df.sort_values(by = st.session_state['category'], ascending = False)[:st.session_state['bar_num'] + 1].reset_index().drop('index', axis = 1)
 st.write('The following bar chart shows the top ', st.session_state['bar_num'], ' repositories with the highest ', st.session_state['category'], ' on Github.')
 st.write(alt.Chart(df1).mark_bar().encode(
     y = alt.Y('repositories:N', sort = '-x'),
