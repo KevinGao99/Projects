@@ -13,8 +13,6 @@ def get_data():
 df = get_data()
 df.fillna('Not Specified', inplace=True)
 
-
-
 st.markdown('''
 <style>
 .big-font {
