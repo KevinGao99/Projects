@@ -7,7 +7,7 @@ from datetime import datetime
 from collections import Counter
 
 def get_data():
-    return pd.read_csv('Data/github_dataset.csv')
+    return pd.read_csv('https://raw.githubusercontent.com/KevinGao99/Projects/main/Github_Dataset/Data/github_dataset.csv')
 if 'bar_num' not in st.session_state:
     st.session_state['bar_num'] = 10
 if 'category' not in st.session_state:
